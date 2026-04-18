@@ -2,38 +2,35 @@
 **Collaborative Research with the Sharon-Carmel Municipal Environmental Association**
 
 ## 📖 Project Overview
-This research analyzes the impact of the **"Leviathan" offshore gas platform** on air quality in the Sharon region, Israel. By integrating **Big Data** from multiple monitoring stations with **Large Language Models (LLMs)**, this project investigates whether the platform's activation led to a systematic increase in Ozone ($O_3$) concentrations.
+This research analyzes the impact of the **"Leviathan" offshore gas platform** on air quality in the Sharon region, Israel. By integrating Big Data from multiple monitoring stations with advanced Machine Learning architectures, this project investigates whether the platform's activation led to a systematic increase in Ozone ($O_3$) concentrations.
 
 ## 🧭 Methodological Justification: Why Westerly Winds?
-![Wind Sector Analysis](wind_sector_analysis.png)
-*Before analyzing the periods, I conducted a spatial sector analysis. The **Radar Plot** and **Sector Boxplot** clearly demonstrate that the highest Ozone concentrations consistently arrive from the **West (W)** and **North-West (NW)** sectors—directly correlating with the offshore platform's location.*
+To isolate the platform's impact, the analysis focuses strictly on **Stable Westerly Winds** (25th-75th percentile speeds). Spatial sector analysis (Radar Plots) confirms that the highest Ozone concentrations arrive from the West (W) and North-West (NW) sectors—directly correlating with the offshore platform's location.
 
-## 📊 Key Impact Summary
-![Ozone Percentage Change](impact_summary.png)
-*Significant increases in average $O_3$ levels were recorded at coastal stations, with a **12.6% rise** at the "Hamapil" station ($p < 0.0001$).*
+## 📊 Key Results & Statistical Audit
+Our multi-stage analysis provides strong evidence of an operational impact on inland Ozone levels:
 
-## 🛠️ Data Engineering & Methodology
-To handle real-world "dirty" data, I implemented a multi-stage pipeline:
-* **Smart Imputation:** Used **KNN** for wind values and **Linear Regression** for weather data.
-* **Feature Engineering:** Isolated **stable westerly winds** (25th-75th percentile speeds) to accurately track pollutants arriving from the sea.
+*   **Predictive Power:** The optimized **XGBoost** model achieved an **$R^2$ score of 0.361** on the test set, outperforming baseline linear models.
+*   **Physical Contribution (Theta):** Linear Regression analysis revealed that the platform's operational status is a primary driver of Ozone increase, with a **Theta coefficient of 2.31** (the highest among predictors).
+*   **Error Reduction:** Optimized models achieved an **RMSE to STD ratio of 0.81**, effectively reducing prediction uncertainty by approximately 19% compared to natural data variance.
+*   **Significant Shifts:** Pairwise **Mann-Whitney U tests** confirmed statistically significant increases ($p < 0.05$) across all coastal stations, with a **12.6% rise** recorded at the "Hamapil" station.
 
-## 🔬 Deep Dive: Patterns & Distributions
-### 1. Diurnal Photochemical Signature
-![Diurnal Profile](diurnal_profile.png)
-*The daily profile reveals that the most substantial increases occur during peak sunlight hours (12:00–16:00), indicating enhanced photochemical production.*
+## 🤖 Machine Learning & Innovation
+### Predictive Models
+To handle non-linear atmospheric interactions, we implemented and compared several architectures:
+*   **Random Forest:** Optimized via `GridSearchCV` (max_depth=15, n_estimators=200).
+*   **XGBoost:** The top-performing model for capturing complex meteorological patterns.
+*   **Neural Network (MLP):** A 2-layer architecture (64 and 32 neurons) designed to model photochemical signatures.
 
-### 2. Systematic Shift in Concentrations
-![Ozone Distribution](ozone_distribution.png)
-*The boxplot analysis confirms a systematic upward shift in Ozone distributions during the full operation period, rather than isolated extreme events.*
+### The LLM Edge
+*   **Knowledge Extraction:** Leveraged Large Language Models (LLMs) to synthesize technical reports and scientific literature on Ozone precursors.
+*   **Advanced Analytics:** Used AI-driven methodologies for data cleaning (Smart Imputation) and automated insight generation.
 
-## 🤖 AI & Innovation: The LLM Edge
-* **Scientific Insight Extraction:** Leveraging LLMs to analyze scientific literature and technical reports.
-* **Pattern Comparison:** Using AI to compare local pollution trends with global research findings.
-
-## 💻 Tech Stack
-* **Languages:** Python (Pandas, NumPy, Scikit-learn, SciPy)
-* **AI/LLMs:** Integration of Large Language Models for text analysis.
-* **Visualization:** Matplotlib, Seaborn
+## 🛠️ Tech Stack
+*   **Languages:** Python (Pandas, NumPy, SciPy)
+*   **ML Frameworks:** Scikit-learn, XGBoost
+*   **Visualization:** Matplotlib, Seaborn
+*   **Environment:** Google Colab / Jupyter
 
 ---
-*Note: Due to confidentiality agreements, raw datasets are not included. For inquiries, please contact me.*
+*Note: This project follows a multi-stage pipeline involving KNN imputation for missing wind data and strict meteorological filtering. For academic or professional inquiries, please refer to the `Code.ipynb` file or contact me via GitHub.*
